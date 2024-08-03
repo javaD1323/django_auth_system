@@ -43,7 +43,7 @@ class VerifyOTPView(APIView):
                 return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
             except ValidationError as e:
                 record_failed_attempt(get_client_ip(request))
-                return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST) # raise insted of error
+                return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
